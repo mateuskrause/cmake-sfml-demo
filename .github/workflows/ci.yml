@@ -39,16 +39,6 @@ jobs:
     - name: Install
       shell: bash
       run: cmake --install build --config Release
-      
-    - name: Create Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.CI_TOKEN }}
-      with:
-        tag_name: latest
-        release_name: Latest Release
-        draft: false
-        prerelease: false
         
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
