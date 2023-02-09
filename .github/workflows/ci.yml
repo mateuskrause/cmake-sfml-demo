@@ -42,6 +42,6 @@ jobs:
         name: CMakeSFMLProject-${{ matrix.platform.os }}
         path: | 
           build/CMakeSFMLProject
-          build/CMakeSFMLProject.exe
+          build\CMakeSFMLProject.exe
         
         
