@@ -11,8 +11,6 @@ jobs:
       fail-fast: false
       matrix:
         platform:
-        - { name: Linux GCC,      os: ubuntu-latest }
-        - { name: MacOS XCode,    os: macos-latest }
         - { name: Windows VS2022, os: windows-2022 }
 
         config:
@@ -43,6 +41,7 @@ jobs:
       with:
         name: CMakeSFMLProject-${{ matrix.platform.os }}
         path: | 
-          build/
+          build/CMakeSFMLProject
+          build/CMakeSFMLProject.exe
         
         
