@@ -40,6 +40,6 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: CMakeSFMLProject-${{ matrix.platform.os }}
-        path: build/
+        path: build/Release/CMakeSFMLProject.exe
         
         
