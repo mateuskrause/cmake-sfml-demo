@@ -43,7 +43,6 @@ jobs:
       with:
         name: CMakeSFMLProject-${{ matrix.platform.os }}
         path: | 
-          build/CMakeSFMLProject
-          build/bin/
+          build/
         
         
