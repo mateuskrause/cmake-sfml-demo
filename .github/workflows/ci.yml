@@ -47,4 +47,6 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: CMakeSFMLProject-${{ matrix.platform.name }}
-        path: build/CMakeSFMLProject${{ runner.os == 'Windows' ? '.exe':'' }} 
+        path: build/CMakeSFMLProject*
+        
+        
