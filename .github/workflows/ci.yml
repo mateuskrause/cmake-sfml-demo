@@ -11,6 +11,8 @@ jobs:
       fail-fast: false
       matrix:
         platform:
+        - { name: Linux GCC,      os: ubuntu-latest }
+        - { name: MacOS XCode,    os: macos-latest }
         - { name: Windows VS2022, os: windows-2022 }
 
         config:
@@ -40,6 +42,8 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: CMakeSFMLProject-${{ matrix.platform.os }}
-        path: build/Release/CMakeSFMLProject.exe
-        
+        path: | 
+          build/CMakeSFMLProject
+          build/Release/CMakeSFMLProject.exe
+        if-no-files-found: error
         
