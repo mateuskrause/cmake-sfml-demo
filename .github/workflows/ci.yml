@@ -12,8 +12,8 @@ jobs:
       matrix:
         platform:
         - { name: Linux GCC,      os: ubuntu-latest }
-        - { name: MacOS XCode,    os: macos-latest  }
-        - { name: Windows MinGW,  os: windows-latest, flags: -DCMAKE_C_COMPILER=mingw-w64-x86_64-gcc -DCMAKE_CXX_COMPILER=mingw-w64-x86_64-g++ }
+        - { name: MacOS XCode,    os: macos-latest }
+        - { name: Windows VS2022, os: windows-2022 }
 
         config:
         - { name: Static, flags: -DBUILD_SHARED_LIBS=FALSE }
@@ -22,11 +22,6 @@ jobs:
     - name: Install Linux Dependencies
       if: runner.os == 'Linux'
       run: sudo apt-get update && sudo apt-get install libxrandr-dev libxcursor-dev libudev-dev libopenal-dev libflac-dev libvorbis-dev libgl1-mesa-dev libegl1-mesa-dev
-      
-    - name: Install Windows Dependencies
-      if: runner.os == 'Windows'
-      run: choco install mingw
-
 
     - name: Checkout
       uses: actions/checkout@v3
@@ -44,9 +39,11 @@ jobs:
       run: cmake --install build --config Release
         
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
-        name: CMakeSFMLProject-${{ matrix.platform.name }}
-        path: build/CMakeSFMLProject*
+        name: CMakeSFMLProject-${{ matrix.platform.os }}
+        path: | 
+          build/CMakeSFMLProject
+          build/CMakeSFMLProject.exe
         
         
